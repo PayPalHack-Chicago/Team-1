@@ -39,7 +39,6 @@ target 'paypalproject' do
 
   pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
 
-  pod 'RNExitApp', :path => '../node_modules/react-native-exit-app'
 
   target 'paypalprojectTests' do
     inherit! :search_paths
