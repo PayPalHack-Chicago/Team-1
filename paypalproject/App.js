@@ -63,6 +63,9 @@ PushNotification.configure({
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+          Current: 'HOME', // Current refers page being displayed
+        };
     }
 
     render() {
@@ -70,7 +73,11 @@ class HomeScreen extends React.Component {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Home Screen</Text>
-                <Text style={{ color:'red' }}>Hi</Text>
+                
+                {this.state.Current == 'HOME'?
+                    <Text style={{ color:'red' }}>HOME</Text>
+                  : <Text style={{ color:'red' }}>SHOP</Text>}
+
                 <Button onPress={() => this.props.navigation.navigate('Registration')} title="Go To Registration"/>
                 <Button onPress={() => this.props.navigation.navigate('screen4')} title="Go To Co"/>
                 <Button onPress={() => {
@@ -103,6 +110,11 @@ class HomeScreen extends React.Component {
                     });
                 }} title="GET NOTIFICATIONS"/>
                 <NotificationPopup ref={ref => this.popup = ref} />
+
+                <View style={ styles.bottomView}>
+                  <Button title="HOME" onPress={() => this.setState({Current: 'HOME'})} />
+                  <Button title="SHOP" onPress={() => this.setState({Current: 'SHOP'})}/>
+               </View>
 
             </View>
         );
@@ -215,5 +227,22 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  bottomView:{
+    width: '100%', 
+    height: '12%', 
+    backgroundColor: '#FF9800', 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  textStyle:{
+
+    color: '#fff',
+    fontSize:22
+  }
 });
 
