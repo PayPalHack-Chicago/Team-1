@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -29,6 +21,8 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Registration from './src/registration.js';
+
+import Cosmetics from './src/Cosmetics.js';
 import NotificationPopup from 'react-native-push-notification-popup';
 
 var PushNotification = require("react-native-push-notification");
@@ -69,7 +63,6 @@ PushNotification.configure({
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
@@ -77,8 +70,9 @@ class HomeScreen extends React.Component {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Home Screen</Text>
-                <Text>Hi</Text>
+                <Text style={{ color:'red' }}>Hi</Text>
                 <Button onPress={() => this.props.navigation.navigate('Registration')} title="Go To Registration"/>
+                <Button onPress={() => this.props.navigation.navigate('screen4')} title="Go To Co"/>
                 <Button onPress={() => {
                     // PushNotification.localNotification({
                     //     /* iOS only properties */
@@ -97,7 +91,7 @@ class HomeScreen extends React.Component {
                     PushNotification.localNotificationSchedule({
                         //... You can use all the options from localNotifications
                         message: "My Notification Message", // (required)
-                        date: new Date(Date.now() + 10 * 1000) // in 60 secs
+                        date: new Date(Date.now() + 10 * 1000) // in 10 secs
                     });
                     this.popup.show({
                         onPress: function() {console.log('Pressed')},
@@ -114,6 +108,7 @@ class HomeScreen extends React.Component {
         );
     }
 
+
 }
 
 const AppNavigator = createStackNavigator({
@@ -121,8 +116,11 @@ const AppNavigator = createStackNavigator({
         screen: HomeScreen,
     },
     Registration: {
-      screen: Registration,
+        screen: Registration,
     },
+    screen4: {
+        screen: Cosmetics,
+    }
 
 }, {
   initialRouteName: 'Home',
