@@ -38,6 +38,7 @@ target 'paypalproject' do
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
 
   target 'paypalprojectTests' do
