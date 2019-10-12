@@ -13,6 +13,7 @@ import {
   ScrollView,
   View,
   Text,
+    Button,
   StatusBar,
 } from 'react-native';
 
@@ -24,54 +25,88 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
+import Registration from './src/registration.js';
+
+class HomeScreen extends React.Component {
+    render() {
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>Home Screen</Text>
+                <Text>Hi</Text>
+                <Button onPress={() => this.props.navigation.navigate('Registration')} title="Go To Registration"/>
+
+
             </View>
-          )}
-          <View style={styles.body}>
-              <Text>Hello from Yves</Text>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+        );
+    }
+}
+
+const AppNavigator = createStackNavigator({
+    Home: {
+        screen: HomeScreen,
+    },
+    Registration: {
+      screen: Registration,
+    },
+
+}, {
+  initialRouteName: 'Home',
+});
+
+const App = createAppContainer(AppNavigator);
+export default App;
+
+// const App: () => React$Node = () => {
+//   return (
+//     <>
+//       <StatusBar barStyle="dark-content" />
+//       <SafeAreaView>
+//         <ScrollView
+//           contentInsetAdjustmentBehavior="automatic"
+//           style={styles.scrollView}>
+//           <Header />
+//           {global.HermesInternal == null ? null : (
+//             <View style={styles.engine}>
+//               <Text style={styles.footer}>Engine: Hermes</Text>
+//             </View>
+//           )}
+//           <View style={styles.body}>
+//               <Text>Hello from Yves</Text>
+//             <View style={styles.sectionContainer}>
+//               <Text style={styles.sectionTitle}>Step One</Text>
+//               <Text style={styles.sectionDescription}>
+//                 Edit <Text style={styles.highlight}>App.js</Text> to change this
+//                 screen and then come back to see your edits.
+//               </Text>
+//             </View>
+//             <View style={styles.sectionContainer}>
+//               <Text style={styles.sectionTitle}>See Your Changes</Text>
+//               <Text style={styles.sectionDescription}>
+//                 <ReloadInstructions />
+//               </Text>
+//             </View>
+//             <View style={styles.sectionContainer}>
+//               <Text style={styles.sectionTitle}>Debug</Text>
+//               <Text style={styles.sectionDescription}>
+//                 <DebugInstructions />
+//               </Text>
+//             </View>
+//             <View style={styles.sectionContainer}>
+//               <Text style={styles.sectionTitle}>Learn More</Text>
+//               <Text style={styles.sectionDescription}>
+//                 Read the docs to discover what to do next:
+//               </Text>
+//             </View>
+//             <LearnMoreLinks />
+//           </View>
+//         </ScrollView>
+//       </SafeAreaView>
+//     </>
+//   );
+// };
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -112,4 +147,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
