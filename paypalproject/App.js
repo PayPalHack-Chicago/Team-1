@@ -13,6 +13,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Card from './src/components/Card.js'
 import CardDetails from './src/components/CardDetails.js'
 import Shop from './src/Shop.js'
+import Settings from './src/NotificationSettings.js'
+
 import {
   Header,
   LearnMoreLinks,
@@ -80,7 +82,7 @@ class HomeScreen extends React.Component {
                 </SafeAreaView>
 
                 <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
-                    <Icon name="bars" color="grey" size={39} style={{marginRight:94, marginLeft:23, marginTop: 20, marginBottom: 20}}></Icon>
+                    <Icon name="bars" color="grey" size={39} style={{marginRight:94, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={()=>{this.props.navigation.navigate('Settings')}}></Icon>
                     <Image source={require('./src/assets/logo.png')} style={{width: 62.41, height: 62.32, marginRight: 86.59, marginTop:10, marginBottom: 0, marginLeft: 8 }}/>
                     <Icon name="plus" color="grey" size={39} style={{marginTop: 20, marginBottom: 20, marginRight: 30, marginLeft: 22}} ></Icon>
                 </View>
@@ -118,6 +120,9 @@ const AppNavigator = createStackNavigator({
     },
     Shop: {
       screen: Shop,
+    },
+    Settings: {
+      screen: Settings,
     }
 
 }, {
