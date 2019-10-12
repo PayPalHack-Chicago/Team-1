@@ -935,6 +935,11 @@
   dependencies:
     invariant "^2.2.4"
 
+"@react-native-community/slider@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-2.0.2.tgz#d7e8d098cbd3434e7dae783777086cbb9875680d"
+  integrity sha512-Hj1hATFe8jiS7b/vvLJ8HCgEq4P9TynWdQL2GrxD4NlUh6xFY2XFDcpmUAxpeUDAN+vbq3/JI+P5Q5nweC1FeQ==
+
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
@@ -5180,6 +5185,14 @@ react-native-gesture-handler@^1.4.1:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-progress-steps@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/react-native-progress-steps/-/react-native-progress-steps-1.2.8.tgz#b5b888c693eb7c9fb19d6dd5f5167047a03d7c38"
+  integrity sha512-W9iQYg0ZPQPW8JSyuUp8XGhK+xDW2Vj7FPJasalHmY3hlTnZ24wdQLoj1tJxnka4vKDIciT2mBBIlLtkxmIRfw==
+  dependencies:
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
 
 react-native-push-notification-popup@^1.4.0:
   version "1.4.0"
