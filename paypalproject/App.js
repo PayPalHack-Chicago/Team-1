@@ -1,13 +1,17 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
     Button,
-  StatusBar,
+    StatusBar,
+    Image,
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Card from './src/components/Card.js'
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   Header,
@@ -17,13 +21,14 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, SafeAreaView } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Registration from './src/registration.js';
 
 import Cosmetics from './src/Cosmetics.js';
 import NotificationPopup from 'react-native-push-notification-popup';
+import Topbar from './src/components/Topbar'
 
 var PushNotification = require("react-native-push-notification");
 
@@ -69,58 +74,45 @@ class HomeScreen extends React.Component {
     }
 
     render() {
-
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
-                
-                {this.state.Current == 'HOME'?
-                    <Text style={{ color:'red' }}>HOME</Text>
-                  : <Text style={{ color:'red' }}>SHOP</Text>}
+                <SafeAreaView>
+                </SafeAreaView>
 
-                <Button onPress={() => this.props.navigation.navigate('Registration')} title="Go To Registration"/>
-                <Button onPress={() => this.props.navigation.navigate('screen4')} title="Go To Co"/>
-                <Button onPress={() => {
-                    // PushNotification.localNotification({
-                    //     /* iOS only properties */
-                    //
-                    //     /* iOS and Android properties */
-                    //     title: "My Notification Title", // (optional)
-                    //         message: "My Notification Message", // (required)
-                    //     playSound: false, // (optional) default: true
-                    //     soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-                    //
-                    //     repeatType: 'day', // (optional) Repeating interval. Check 'Repeating Notifications' section for more info.
-                    //     actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
-                    // });
+                <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
+                    <Icon name="bars" color="grey" size={39} style={{marginRight:94, marginLeft:23, marginTop: 20, marginBottom: 20}}></Icon>
+                    <Image source={require('./src/assets/logo.png')} style={{width: 62.41, height: 62.32, marginRight: 86.59, marginTop:10, marginBottom: 0, marginLeft: 8 }}/>
+                    <Icon name="plus" color="grey" size={39} style={{marginTop: 20, marginBottom: 20, marginRight: 30, marginLeft: 22}} ></Icon>
+                </View>
 
+                <View style={{backgroundColor: '#f7f7f7', width:'100%', marginTop:0}}>
+                    <Text style={{marginLeft: 23, marginRight: 239, marginTop: 23, fontFamily:'arial', fontSize: 17}}>Howdy, Angela</Text>
+                    <Text style={{marginLeft: 23, marginTop:5, marginBottom:31, fontSize: 25, fontFamily: 'arial'}}>Let's get crackin'!</Text>
+                </View>
 
-                    PushNotification.localNotificationSchedule({
-                        //... You can use all the options from localNotifications
-                        message: "My Notification Message", // (required)
-                        date: new Date(Date.now() + 10 * 1000) // in 10 secs
-                    });
-                    this.popup.show({
-                        onPress: function() {console.log('Pressed')},
-                        appTitle: 'Glim',
-                        timeText: 'Now',
-                        title: 'Hey',
-                        body: 'This is a sample message.',
-                        slideOutTime: 5000
-                    });
-                }} title="GET NOTIFICATIONS"/>
-                <NotificationPopup ref={ref => this.popup = ref} />
+                <Card cardTitle='AMEX1' last4digits='1234' debt='638.27' card='amex' navigation={this.props.navigation}/>
 
                 <View style={ styles.bottomView}>
                   <Button title="HOME" onPress={() => this.setState({Current: 'HOME'})} />
                   <Button title="SHOP" onPress={() => this.setState({Current: 'SHOP'})}/>
-               </View>
+                </View>
 
+                <NotificationPopup ref={ref => this.popup = ref} />
             </View>
         );
     }
 
+    async componentDidMount() {
+        await AsyncStorage.setItem('@card-IDS', '["AMEX1"]');
+        await AsyncStorage.setItem('@card-AMEX1-id', 'AMEX1');
+        await AsyncStorage.setItem('@card-AMEX1-last4digits', '1234');
+        await AsyncStorage.setItem('@card-AMEX1-debt', '638.27');
+        await AsyncStorage.setItem('@card-AMEX1-card', 'amex');
 
+        let cardIDs = await AsyncStorage.getItem('@card-IDS')
+        cardIDs = JSON.parse(cardIDs);
+        console.log(cardIDs);
+    }
 }
 
 const AppNavigator = createStackNavigator({
@@ -136,6 +128,7 @@ const AppNavigator = createStackNavigator({
 
 }, {
   initialRouteName: 'Home',
+  headerMode: 'none',
 });
 
 const App = createAppContainer(AppNavigator);
@@ -228,15 +221,15 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   bottomView:{
-    width: '100%', 
-    height: '12%', 
-    backgroundColor: '#FF9800', 
-    justifyContent: 'center', 
+    width: '100%',
+    height: '12%',
+    backgroundColor: '#FF9800',
+    justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
     bottom: 0,
     flexDirection: 'row',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
 
   textStyle:{
@@ -245,4 +238,3 @@ const styles = StyleSheet.create({
     fontSize:22
   }
 });
-
