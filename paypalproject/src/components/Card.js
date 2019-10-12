@@ -7,7 +7,7 @@ const myIcon = <Icon name="rocket" size={30} color="#900" />;
 
 export default class Card extends React.Component {
     onPress = () => {
-        this.props.navigation.navigate('screen4', )
+        this.props.navigation.navigate('CardDetails', this.props.navigation)
     }
 
     render() {

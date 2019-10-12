@@ -11,8 +11,8 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Card from './src/components/Card.js'
-import AsyncStorage from '@react-native-community/async-storage';
-
+import CardDetails from './src/components/CardDetails.js'
+import Shop from './src/Shop.js'
 import {
   Header,
   LearnMoreLinks,
@@ -93,25 +93,13 @@ class HomeScreen extends React.Component {
                 <Card cardTitle='AMEX1' last4digits='1234' debt='638.27' card='amex' navigation={this.props.navigation}/>
 
                 <View style={ styles.bottomView}>
-                  <Button title="HOME" onPress={() => this.setState({Current: 'HOME'})} />
-                  <Button title="SHOP" onPress={() => this.setState({Current: 'SHOP'})}/>
+                  <Button title="HOME" onPress={() => this.props.navigation.navigate('Home')} />
+                  <Button title="SHOP" onPress={() => this.props.navigation.navigate('Shop')}/>
                 </View>
 
                 <NotificationPopup ref={ref => this.popup = ref} />
             </View>
         );
-    }
-
-    async componentDidMount() {
-        await AsyncStorage.setItem('@card-IDS', '["AMEX1"]');
-        await AsyncStorage.setItem('@card-AMEX1-id', 'AMEX1');
-        await AsyncStorage.setItem('@card-AMEX1-last4digits', '1234');
-        await AsyncStorage.setItem('@card-AMEX1-debt', '638.27');
-        await AsyncStorage.setItem('@card-AMEX1-card', 'amex');
-
-        let cardIDs = await AsyncStorage.getItem('@card-IDS')
-        cardIDs = JSON.parse(cardIDs);
-        console.log(cardIDs);
     }
 }
 
@@ -124,6 +112,12 @@ const AppNavigator = createStackNavigator({
     },
     screen4: {
         screen: Cosmetics,
+    },
+    CardDetails: {
+        screen: CardDetails,
+    },
+    Shop: {
+      screen: Shop,
     }
 
 }, {
