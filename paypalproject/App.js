@@ -83,7 +83,7 @@ class HomeScreen extends React.Component {
                 </SafeAreaView>
 
                 <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'black', width:'100%', position:'absolute', top:30}}>
-                    <Icon name="bars" color="black" size={39} style={{marginRight:94, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={()=>{this.props.navigation.navigate('Settings')}}></Icon>
+                    <Icon name="bars" color="black" size={39} style={{marginRight:94, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={()=>{this.props.navigation.navigate('Settings', this.props.navigation)}}></Icon>
                     <Image source={require('./src/assets/logo.png')} style={{width: 62.41, height: 62.32, marginRight: 86.59, marginTop:10, marginBottom: 0, marginLeft: 8 }}/>
                     <Icon name="plus" color="black" size={39} style={{marginTop: 20, marginBottom: 20, marginRight: 30, marginLeft: 22}} onPress={()=>{this.props.navigation.navigate('NewCard')}} ></Icon>
                 </View>
@@ -96,8 +96,9 @@ class HomeScreen extends React.Component {
                 <Card cardTitle='AMEX1' last4digits='1234' debt='638.27' card='amex' navigation={this.props.navigation}/>
 
                 <View style={ styles.bottomView}>
-                  <Button title="HOME" onPress={() => this.props.navigation.navigate('Home')} />
-                  <Button title="SHOP" onPress={() => this.props.navigation.navigate('Shop')}/>
+                  <Icon.Button backgroundColor='white' name="home" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.navigate('Home')}/>
+                  <Icon.Button backgroundColor='white' name="gift" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.navigate('Shop')}/>
+
                 </View>
 
                 <NotificationPopup ref={ref => this.popup = ref} />
@@ -133,6 +134,7 @@ const AppNavigator = createStackNavigator({
   initialRouteName: 'Home',
   headerMode: 'none',
 });
+console.disableYellowBox = true;
 
 const App = createAppContainer(AppNavigator);
 export default App;
@@ -226,7 +228,7 @@ const styles = StyleSheet.create({
   bottomView:{
     width: '100%',
     height: '12%',
-    backgroundColor: '#FF9800',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',

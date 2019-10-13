@@ -47,6 +47,10 @@ export default class Settings extends React.Component {
       }
     }
 
+    onBackPress = () => {
+        this.props.navigator.navigate('Home');
+    }
+
     render() {
       return (
         <View stlye={{flex:1,alignItems:'center', justifyContent:'center'}}>
@@ -54,7 +58,7 @@ export default class Settings extends React.Component {
             </SafeAreaView>
 
             <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
-                <Icon.Button backgroundColor='white' name="arrow-left" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.navigate('Home')}/>
+                <Icon.Button backgroundColor='white' name="arrow-left" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => {this.onBackPress(); console.log('b')}}></Icon.Button>
                 <Text style={{marginRight:45, marginLeft:25, marginTop: 25, marginBottom: 20, fontSize:39, fontWeight:'bold'}}>Settings</Text>
             </View>
             <View style={{display:'flex', flexDirection:'column', width:'100%', justifyContent:'center',}}>
@@ -92,13 +96,12 @@ export default class Settings extends React.Component {
               "Only three things are inevitable in life: death, taxes and debt. Maybe not that last one if you pay off this month’s debt on October 12",
               "You’re not responding to these notifications. That’s fine, I’ll just stop bothering you then.",
               "Why won’t you text me back? I miss you.",
-              "I miss our little rendezvous every month. Come pay your debt off!."
+              "I miss our little rendezvous every month. Come pay your debt off."
             ],
             "3": [
               "You really should be paying this back. You racked up $14.47 in interest the past month.",
               "Every month you don’t pay off your debt is another month your otter goes hungry. But I guess you like that, don’t you?",
-              "You are not paying your debts and I am going tell your Mom!",
-              ""
+              "You aren't paying your debts and I am going tell your Mom!"
             ]
           }
 
@@ -114,11 +117,14 @@ export default class Settings extends React.Component {
             repeatType: 'day', // (optional) Repeating interval. Check 'Repeating Notifications' section for more info.*/}
             actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more*/}
         });
+        let greetings = ["Hey, Angela!", "Hey, it's me, Otto!", "Hey, did you forget about me?"]
+
         this.popup.show({
+            appIconSource: require('./assets/icon.jpg'),
             onPress: function() {console.log('Pressed')},
             appTitle: 'Glim',
             timeText: 'Now',
-            title: 'Hey!',
+            title: greetings[Math.floor(Math.random() * 3)],
             body: msg,
             slideOutTime: 5000
         });

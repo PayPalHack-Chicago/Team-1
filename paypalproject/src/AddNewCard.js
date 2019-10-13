@@ -26,7 +26,7 @@ export default class NewCard extends React.Component {
                   </SafeAreaView>
                   <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
                       <Icon.Button backgroundColor='white' name="arrow-left" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.goBack()}/>
-                      <Image source={require('./assets/prog1.png')} style={{width:20, height:1  }}/>
+                      <Image source={require('./assets/prog1.jpg')} style={{width:240, height:30, marginLeft:0, marginTop:33  }}/>
                   </View>
 
                   <Text style={{marginTop:100, marginLeft: 25, fontFamily:'arial'}}>Let's get you back on track, Angela</Text>
@@ -48,7 +48,7 @@ export default class NewCard extends React.Component {
                   </SafeAreaView>
                   <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
                       <Icon.Button backgroundColor='white' name="arrow-left" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.goBack()}/>
-                      <Image source={require('./assets/prog1.png')} style={{width:20, height:1  }}/>
+                      <Image source={require('./assets/prog2.jpg')} style={{width:240, height:30, marginLeft:0, marginTop:33  }}/>
                   </View>
 
                   <Text style={{marginTop:100, marginLeft: 25, fontFamily:'arial'}}>Awesome!</Text>
@@ -58,6 +58,7 @@ export default class NewCard extends React.Component {
                       onChangeText={(text) => this.setState({stage2text: text})}
                       value={this.state.stage2text}
                   />
+                  <Button title="previous" onPress={() => {this.setState({stage:1})}}/>
                   <Button title="next" onPress={() => {this.setState({stage: 3})}}/>
 
               </View>
@@ -71,7 +72,7 @@ export default class NewCard extends React.Component {
                     </SafeAreaView>
                     <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
                         <Icon.Button backgroundColor='white' name="arrow-left" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.goBack()}/>
-                        <Image source={require('./assets/prog1.png')} style={{width:20, height:1  }}/>
+                        <Image source={require('./assets/prog3.jpg')} style={{width:240, height:30, marginLeft:0, marginTop:33  }}/>
                     </View>
 
                     <Text style={{marginTop:100, marginLeft: 25, fontFamily:'arial'}}>Gotcha, gotcha!</Text>
@@ -81,6 +82,7 @@ export default class NewCard extends React.Component {
                         onChangeText={(text) => this.setState({stage3text: text})}
                         value={this.state.stage3text}
                     />
+                    <Button title="previous" onPress={() => {this.setState({stage:2})}}/>
                     <Button title="next" onPress={() => {this.setState({stage: 4})}}/>
 
                 </View>
@@ -94,7 +96,7 @@ export default class NewCard extends React.Component {
                   </SafeAreaView>
                   <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
                       <Icon.Button backgroundColor='white' name="arrow-left" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.goBack()}/>
-                      <Image source={require('./assets/prog1.png')} style={{width:20, height:1  }}/>
+                      <Image source={require('./assets/prog4.jpg')} style={{width:240, height:30, marginLeft:0, marginTop:33  }}/>
                   </View>
 
                   <Text style={{marginTop:100, marginLeft: 25, fontFamily:'arial'}}>Almost done...</Text>
@@ -104,6 +106,7 @@ export default class NewCard extends React.Component {
                       onChangeText={(text) => this.setState({stage4text: text})}
                       value={this.state.stage4text}
                   />
+                  <Button title="previous" onPress={() => {this.setState({stage:3})}}/>
                   <Button title="next" onPress={() => {this.setState({stage: 4})}}/>
 
               </View>

@@ -14,7 +14,7 @@ export default class CardDetails extends React.Component {
                 <View style={{display:'flex', flexDirection:'row', borderBottomWidth:1, borderBottomColor:'grey', width:'100%', position:'absolute', top:30}}>
                     <Icon.Button backgroundColor='white' name="arrow-left" color="black" size={39} style={{marginRight:23, marginLeft:23, marginTop: 20, marginBottom: 20}} onPress={() => this.props.navigation.goBack()}/>
                     <Text style={{marginRight:45, marginLeft:25, marginTop: 25, marginBottom: 20, fontSize:39, fontWeight:'bold'}}>AMEX1</Text>
-                    <Icon name="edit" color="black" size={39} style={{marginTop: 30, marginBottom: 25, marginRight: 30, marginLeft: 22}} ></Icon>
+                    <Icon name="edit" color="black" size={39} style={{marginTop: 30, marginBottom: 25, marginRight: 40, marginLeft: 12}} ></Icon>
                 </View>
 
                 <Text style={{position:'relative', marginTop:100, marginLeft: 130, fontFamily:'arial'}}>As of Oct 8, 6:37pm</Text>
