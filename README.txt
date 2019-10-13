@@ -1,13 +1,11 @@
-hello
+# Hello, welcome to our Glim Project submission for PayPal Hack-Chicago!.
 
-`npm install`
+To run the project do `npm install`, then `react-native run-ios`. Make sure you're on the version of XCode compatible with your version of react-native. This project only works as intended on iPhone X, given the short time constraint of the project.
 
-to run the iOS simulator do `react-native run-ios`
-some helpful commands:
-`react-native link`
-`react-native upgrade`
-`cd ios && pod install`
-`react-native eject && react-native upgrade`
-`react-native link react-native-gesture-handler`
+You may need to install pods, if that's the case do `cd ./ios && pod install`
 
-if you get a bundle error, do `react-native upgrade`, which should replace your xcode proj stuff
+You can find more information about this project on https://devpost.com/software/team-1-ayn4vs
+
+By: Yena Kim, Yves Shum, Benjamin Cheong, Adela Deng, Sarika Mahbubani 
+
+
